@@ -64,7 +64,8 @@ const properties = require('../../../properties.js');
 			ref : "Block"
 		},
 		Type: {
-			type: Schema.ObjectId,
+			type: Schema.ObjectId, 
+			required : true,
 			ref : "Item"
 		},
 		

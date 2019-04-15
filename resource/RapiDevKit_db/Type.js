@@ -79,6 +79,7 @@ require('./custom/TypeCustom.js');
 		},
 		Type: {
 			type: Schema.ObjectId,
+			required : true,
 			ref : "Item"
 		},
 		
@@ -115,6 +116,21 @@ app['delete'](properties.api + '/types/:id', function (req, res) {
 		  if (err) return handleError(err, res);
 		  res.send(err);
 	});
+});
+
+/**
+ * TypeService.findByName
+ *   @description CRUD ACTION findByName
+ *   @param Objectid key Id of the resource Name to search
+ *
+ */
+app.get(properties.api + '/types/findByName/:key', function (req, res) {
+
+	db_RapiDevKit_db.Type.find({ 'Name' : req.params.key}).exec(function (err, list) {
+		if (err) return handleError(err, res);
+		res.send(list);
+	});
+	
 });
 
 /**

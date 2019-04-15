@@ -60,14 +60,15 @@ require('./custom/BlockTypeCustom.js');
 			type: 'String'
 		},
 		Name: {
-			type: 'String'
+			type: 'String', 
+			required : true
 		},
 		//RELATIONS
 		
 		
 		//EXTERNAL RELATIONS
 		
-		Type: {
+		BlockType: {
 			type: Schema.ObjectId,
 			ref : "Block"
 		},
@@ -105,6 +106,21 @@ app['delete'](properties.api + '/blocktypes/:id', function (req, res) {
 		  if (err) return handleError(err, res);
 		  res.send(err);
 	});
+});
+
+/**
+ * BlockTypeService.findByName
+ *   @description CRUD ACTION findByName
+ *   @param Objectid key Id of the resource Name to search
+ *
+ */
+app.get(properties.api + '/blocktypes/findByName/:key', function (req, res) {
+
+	db_RapiDevKit_db.BlockType.find({ 'Name' : req.params.key}).exec(function (err, list) {
+		if (err) return handleError(err, res);
+		res.send(list);
+	});
+	
 });
 
 /**

@@ -46,16 +46,19 @@ const properties = require('../../../properties.js');
 			type: 'Boolean', 
 			required : true
 		},
+		FontendAPIHook: {
+			type: 'String'
+		},
 		//RELATIONS
 		
 		
 		//EXTERNAL RELATIONS
 		
-		ItemType: {
+		BlockType: {
 			type: Schema.ObjectId,
 			ref : "Block"
 		},
-		Type: {
+		ItemType: {
 			type: Schema.ObjectId,
 			ref : "Block"
 		},

@@ -68,14 +68,17 @@ db_RapiDevKit_db_schema.Block = new mongoose.Schema({
 		type: 'Boolean', 
 		required : true
 	},
+	FontendAPIHook: {
+		type: 'String'
+	},
 	//RELATIONS
+	BlockType: {
+		type: Schema.ObjectId,
+		ref : "BlockType"
+	},
 	ItemType: {
 		type: Schema.ObjectId,
 		ref : "Type"
-	},
-	Type: {
-		type: Schema.ObjectId,
-		ref : "BlockType"
 	},
 	
 	
@@ -93,14 +96,15 @@ db_RapiDevKit_db_schema.BlockType = new mongoose.Schema({
 		type: 'String'
 	},
 	Name: {
-		type: 'String'
+		type: 'String', 
+		required : true
 	},
 	//RELATIONS
 	
 	
 	//EXTERNAL RELATIONS
 	/*
-	Type: {
+	BlockType: {
 		type: Schema.ObjectId,
 		ref : "Block"
 	},
@@ -122,9 +126,6 @@ db_RapiDevKit_db_schema.Item = new mongoose.Schema({
 	Data: {
 		type: 'String'
 	},
-	Link: {
-		type: 'String'
-	},
 	Modified: {
 		type: 'Number'
 	},
@@ -137,16 +138,18 @@ db_RapiDevKit_db_schema.Item = new mongoose.Schema({
 	Status: {
 		type: 'String'
 	},
-	Type: {
-		type: 'String'
-	},
 	//RELATIONS
 	Creator: {
 		type: Schema.ObjectId,
 		ref : "User"
 	},
-	Type: {
+	Link: {
 		type: Schema.ObjectId,
+		ref : "Item"
+	},
+	Type: {
+		type: Schema.ObjectId, 
+		required : true,
 		ref : "Type"
 	},
 	
@@ -213,7 +216,8 @@ db_RapiDevKit_db_schema.Type = new mongoose.Schema({
 		ref : "Block"
 	},
 	Type: {
-		type: Schema.ObjectId,
+		type: Schema.ObjectId, 
+		required : true,
 		ref : "Item"
 	},
 	*/

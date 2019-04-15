@@ -46,14 +46,15 @@ const properties = require('../../../properties.js');
 			type: 'String'
 		},
 		Name: {
-			type: 'String'
+			type: 'String', 
+			required : true
 		},
 		//RELATIONS
 		
 		
 		//EXTERNAL RELATIONS
 		
-		Type: {
+		BlockType: {
 			type: Schema.ObjectId,
 			ref : "Block"
 		},

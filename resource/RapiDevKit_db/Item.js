@@ -66,9 +66,6 @@ require('./custom/ItemCustom.js');
 		Data: {
 			type: 'String'
 		},
-		Link: {
-			type: 'String'
-		},
 		Modified: {
 			type: 'Integer'
 		},
@@ -81,9 +78,6 @@ require('./custom/ItemCustom.js');
 		Status: {
 			type: 'String'
 		},
-		Type: {
-			type: 'String'
-		},
 		//RELATIONS
 		
 		
@@ -93,8 +87,13 @@ require('./custom/ItemCustom.js');
 			type: Schema.ObjectId,
 			ref : "Item"
 		},
+		Link: {
+			type: Schema.ObjectId,
+			ref : "Item"
+		},
 		Type: {
 			type: Schema.ObjectId,
+			required : true,
 			ref : "Item"
 		},
 		
@@ -159,6 +158,48 @@ app.get(properties.api + '/items/:id', function (req, res) {
 		if (err) return handleError(err, res);
 		res.send(obj);
 	});
+});
+
+/**
+ * ItemService.getLink
+ *   @description CRUD ACTION getLink
+ *   @param Objectid id ID of Item from Link
+ *
+ */
+app.get(properties.api + '/items/:id/getLink', function (req, res) {
+
+	db_RapiDevKit_db.Item.findOne({ _id : req.params.id})
+	.populate("Link")
+	.exec(function (err, obj) {
+		if (err) return handleError(err, res);
+		
+		if(obj)
+			res.send(obj.Link);
+		else
+			res.send();
+	});
+	
+});
+
+/**
+ * ItemService.getLink
+ *   @description CRUD ACTION getLink
+ *   @param Objectid id ID of Item from Link
+ *
+ */
+app.get(properties.api + '/items/:id/getLink', function (req, res) {
+
+	db_RapiDevKit_db.Item.findOne({ _id : req.params.id})
+	.populate("Link")
+	.exec(function (err, obj) {
+		if (err) return handleError(err, res);
+		
+		if(obj)
+			res.send(obj.Link);
+		else
+			res.send();
+	});
+	
 });
 
 /**

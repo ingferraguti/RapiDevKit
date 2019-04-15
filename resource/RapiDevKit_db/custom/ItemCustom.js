@@ -52,9 +52,6 @@ const properties = require('../../../properties.js');
 		Data: {
 			type: 'String'
 		},
-		Link: {
-			type: 'String'
-		},
 		Modified: {
 			type: 'Integer'
 		},
@@ -67,9 +64,6 @@ const properties = require('../../../properties.js');
 		Status: {
 			type: 'String'
 		},
-		Type: {
-			type: 'String'
-		},
 		//RELATIONS
 		
 		
@@ -79,8 +73,13 @@ const properties = require('../../../properties.js');
 			type: Schema.ObjectId,
 			ref : "Item"
 		},
-		Type: {
+		Link: {
 			type: Schema.ObjectId,
+			ref : "Item"
+		},
+		Type: {
+			type: Schema.ObjectId, 
+			required : true,
 			ref : "Item"
 		},
 		
